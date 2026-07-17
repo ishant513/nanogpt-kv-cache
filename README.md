@@ -1,17 +1,12 @@
 # nanogpt-kv-cache
 
-A KV cache for nanoGPT, with a correctness-gated, benchmarked decode speedup —
-and a roadmap toward speculative decoding on top of it.
+This project exists to turn nanoGPT into a small but real demonstration that you can do inference-systems engineering. This emphasizes kv cache management, prefill/decode split, speculative decoding, the masking and position bookkeeping that make incremental generation correct.
 
-## The idea
-Vanilla nanoGPT recomputes the full forward pass over the whole context every
-step. This adds an incremental key/value cache so each decode step only does work
-for the new token. The cached path is verified to produce bit-identical output to
-the original, then benchmarked.
+Nanogpt-kv-cache adds the optimizations that real LLM systems utilize. Vanilla nanoGPT recomputes the full forward pass over the entire context on every decode step, while this project layers on the techniques production serving systems use to avoid that. Every optimization is verified to produce bit-identical output to the unoptimized baseline, then benchmarked for the speed it adds.
 
 ## Results
 _(fill in after running the benchmark)_
-- Correctness: cached output identical to uncached (greedy) — ✅ / ❌
+- Correctness: cached output identical to uncached (greedy)
 - Speedup: __x on __ (cpu/mps/cuda) for 200 new tokens
 
 ## Run it
