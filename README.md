@@ -4,11 +4,6 @@ This project exists to turn nanoGPT into a small but real demonstration that you
 
 Nanogpt-kv-cache adds the optimizations that real LLM systems utilize. Vanilla nanoGPT recomputes the full forward pass over the entire context on every decode step, while this project layers on the techniques production serving systems use to avoid that. Every optimization is verified to produce bit-identical output to the unoptimized baseline, then benchmarked for the speed it adds.
 
-## Results
-_(fill in after running the benchmark)_
-- Correctness: cached output identical to uncached (greedy)
-- Speedup: __x on __ (cpu/mps/cuda) for 200 new tokens
-
 ## Run it
 ```bash
 python -m venv .venv && source .venv/bin/activate
